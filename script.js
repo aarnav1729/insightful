@@ -42,6 +42,18 @@ function compareLists(followersList, followingList) {
     // Split the lists into arrays
     const followersArray = followersList.split('\n');
     const followingArray = followingList.split('\n');
+    // New code to extract usernames from HTML
+    const innerSelector = "div._a6-p > div > div:nth-child(1) > a";
+    const listContainerSelector = "body > div > div > div > div._a705 > div._a706";
+    const l = [];
+    const a1 = Array.from(document.querySelector(listContainerSelector).children);
+      a1.forEach(el => {
+      l.push(el.querySelector(innerSelector).innerHTML);
+     });
+
+  // Log the extracted usernames
+  console.log(l);
+
   
     // Clean up the arrays by removing any empty strings or whitespace
     const cleanedFollowersArray = followersArray.filter(item => item.trim() !== '');
