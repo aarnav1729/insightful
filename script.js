@@ -44,10 +44,7 @@ function compareLists(followersList, followingList) {
   const followingArray = followingList.split('\n');
 
   // Extract usernames from the HTML structure
-  const l = extractUsernamesFromHTML();
-
-  // Log the extracted usernames
-  console.log(l);
+  const usernamesFromHTML = extractUsernamesFromHTML();
 
   // Clean up the arrays by removing any empty strings or whitespace
   const cleanedFollowersArray = followersArray.filter(item => item.trim() !== '');
@@ -55,13 +52,7 @@ function compareLists(followersList, followingList) {
 
   // Find common and uncommon elements
   const commonElements = cleanedFollowersArray.filter(item => cleanedFollowingArray.includes(item));
-  const uncommonElements = cleanedFollowingArray.filter(item => !cleanedFollowersArray.includes(item));
-
-  // Display the comparison results
-  console.log('Followers List:', cleanedFollowersArray);
-  console.log('Following List:', cleanedFollowingArray);
-  console.log('Common Elements:', commonElements);
-  console.log('Uncommon Elements:', uncommonElements);
+  const uncommonElements = cleanedFollowingArray.filter(item => !cleanedFollowersArray.includes(item) && !usernamesFromHTML.includes(item));
 
   // Generate the .txt file content
   const txtContent = uncommonElements.join('\n');
@@ -72,11 +63,12 @@ function compareLists(followersList, followingList) {
   // Create a download link for the .txt file
   const downloadLink = document.createElement('a');
   downloadLink.href = URL.createObjectURL(blob);
-  downloadLink.download = 'uncommon-elements.txt';
-  downloadLink.innerText = 'Download Uncommon Elements';
+  downloadLink.download = 'uncommon-usernames.txt';
+  downloadLink.innerText = 'Download Uncommon Usernames';
 
   // Append the download link to the placeholder element
   const uncommonElementsLink = document.getElementById('uncommon-elements-link');
+  uncommonElementsLink.innerHTML = '';
   uncommonElementsLink.appendChild(downloadLink);
 }
 
@@ -84,11 +76,16 @@ function compareLists(followersList, followingList) {
 function extractUsernamesFromHTML() {
   const innerSelector = "div._a6-p > div > div:nth-child(1) > a";
   const listContainerSelector = "body > div > div > div > div._a705 > div._a706";
-  const l = [];
-  const a1 = Array.from(document.querySelector(listContainerSelector).children);
-  a1.forEach(el => {
-    l.push(el.querySelector(innerSelector).innerHTML);
-  });
+  const usernames = [];
+  const listContainer = document.querySelector(listContainerSelector);
 
-  return l;
+  if (listContainer) {
+    const usernamesElements = listContainer.querySelectorAll(innerSelector);
+    usernamesElements.forEach(element => {
+      const username = element.innerHTML;
+      usernames.push(username);
+    });
+  }
+
+  return usernames;
 }
