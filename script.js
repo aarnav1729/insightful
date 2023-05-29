@@ -54,4 +54,5 @@ function compareLists(followersList, followingList) {
   console.log('Followers List:', cleanedFollowersArray);
   console.log('Following List:', cleanedFollowingArray);
   console.log('Common Elements:', commonElements);
+  console.log('Uncommon Elements:', uncommonElements);
 }
