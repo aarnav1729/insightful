@@ -53,10 +53,15 @@ function handleFormSubmit(event) {
 
 // Function to compare the followers and following lists
 function compareLists(followersList, followingList) {
-  // Perform the comparison logic here
-  // For example, you can iterate over the lists and compare the strings
+  // Clean up the lists by removing any empty strings or whitespace
+  const cleanedFollowersList = followersList.filter(item => item.trim() !== '');
+  const cleanedFollowingList = followingList.filter(item => item.trim() !== '');
 
-  // Output the comparison result
-  console.log('Followers List:', followersList);
-  console.log('Following List:', followingList);
+  // Perform the comparison
+  const commonElements = cleanedFollowersList.filter(item => cleanedFollowingList.includes(item));
+
+  // Display the comparison results
+  console.log('Followers List:', cleanedFollowersList);
+  console.log('Following List:', cleanedFollowingList);
+  console.log('Common Elements:', commonElements);
 }
