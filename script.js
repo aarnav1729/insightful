@@ -35,12 +35,12 @@ function handleFormSubmit(event) {
     // Read the contents of the followers list file
     const followersFileReader = new FileReader();
     followersFileReader.onload = function (event) {
-      const followersList = event.target.result.split('\n');
+      const followersList = event.target.result;
 
       // Read the contents of the following list file
       const followingFileReader = new FileReader();
       followingFileReader.onload = function (event) {
-        const followingList = event.target.result.split('\n');
+        const followingList = event.target.result;
 
         // Call the compareLists function with the followers and following lists
         compareLists(followersList, followingList);
@@ -53,15 +53,19 @@ function handleFormSubmit(event) {
 
 // Function to compare the followers and following lists
 function compareLists(followersList, followingList) {
-  // Clean up the lists by removing any empty strings or whitespace
-  const cleanedFollowersList = followersList.filter(item => item.trim() !== '');
-  const cleanedFollowingList = followingList.filter(item => item.trim() !== '');
+  // Split the lists into arrays
+  const followersArray = followersList.split('\n');
+  const followingArray = followingList.split('\n');
+
+  // Clean up the arrays by removing any empty strings or whitespace
+  const cleanedFollowersArray = followersArray.filter(item => item.trim() !== '');
+  const cleanedFollowingArray = followingArray.filter(item => item.trim() !== '');
 
   // Perform the comparison
-  const commonElements = cleanedFollowersList.filter(item => cleanedFollowingList.includes(item));
+  const commonElements = cleanedFollowersArray.filter(item => cleanedFollowingArray.includes(item));
 
   // Display the comparison results
-  console.log('Followers List:', cleanedFollowersList);
-  console.log('Following List:', cleanedFollowingList);
+  console.log('Followers List:', cleanedFollowersArray);
+  console.log('Following List:', cleanedFollowingArray);
   console.log('Common Elements:', commonElements);
 }
