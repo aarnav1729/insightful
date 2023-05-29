@@ -73,12 +73,14 @@ html, body, ul {
     background-color: #555;
   }
 
-/* styles.css */
-/* Add any necessary styles for the About page */
+/* About section */
 .about-section {
   max-width: 800px;
   margin: 0 auto;
   padding: 40px;
+  background-color: #f5f5f5;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .about-section h1 {
