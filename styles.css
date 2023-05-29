@@ -72,6 +72,26 @@ html, body, ul {
   .cta-button:hover {
     background-color: #555;
   }
+
+/* styles.css */
+/* Add any necessary styles for the About page */
+.about-section {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 40px;
+}
+
+.about-section h1 {
+  font-size: 32px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.about-section p {
+  font-size: 18px;
+  line-height: 1.6;
+  margin-bottom: 16px;
+}
   
   /* Footer styles */
   footer {
