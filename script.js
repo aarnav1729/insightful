@@ -49,6 +49,7 @@ function compareLists(followersList, followingList) {
 
   // Perform the comparison
   const commonElements = cleanedFollowersArray.filter(item => cleanedFollowingArray.includes(item));
+  const uncommonElements = cleanedFollowingArray.filter(item => !cleanedFollowersArray.includes(item));
 
   // Display the comparison results
   console.log('Followers List:', cleanedFollowersArray);
