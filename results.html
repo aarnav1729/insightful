@@ -7,20 +7,38 @@
   <title>insightful</title>
 
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <style>
+    body {
+      background-image: url("./bg.mov");
+      background-size: cover;
+    }
+  </style>
+  
+
 </head>
 
 <body class="flex flex-col min-h-screen bg-gray-100 font-sans leading-normal tracking-normal">
 
-  <header class="bg-white-300 border-b md:sticky top-0 z-10">
-    <nav class="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
-      <ul class="flex flex-col md:flex-row list-none ml-auto">
+  <header class="md:sticky top-0 z-10">
+    <nav class="container mx-auto flex flex-wrap p-5 md:flex-row items-center justify-between">
+      <div class="flex items-center justify-between w-full md:w-auto">
+        <a href="index.html">
+          <img src="./logo.webp" alt="Logo" class="w-20 h-20">
+        </a>
+        <button id="menuButton" class="ml-4 md:hidden">
+          <svg class="w-6 h-6" viewBox="0 0 24 24">
+            <path fill="currentColor" d="M4 6h16v2H4zm0 5h16v2H4zm0 5h16v2H4z"/>
+          </svg>
+        </button>
+      </div>
+      <ul id="navList" class="hidden md:flex flex-col md:flex-row list-none ml-auto">
         <li class="nav-item">
-          <a class="px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug text-black hover:color-skyblue opacity-75" href="index.html">
+          <a class="px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug text-black hover:opacity-75" href="index.html">
             Home
           </a>
         </li>
         <li class="nav-item">
-          <a class="px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug text-skyblue hover:opacity-75" href="about.html">
+          <a class="px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug text-black hover:opacity-75" href="about.html">
             About
           </a>
         </li>
@@ -45,16 +63,26 @@
 
   <main class="flex-grow py-16">
     <div class="container mx-auto text-center">
-      <h1 class="text-4xl font-extrabold mb-4">View Your Results Below:</h1>
-      <div id="resultsList" class="border rounded-lg py-4 px-6 bg-white shadow-md"></div>
+      <h1 class="text-4xl font-extrabold mb-4 text-white shadow-4xl">View Your Results Below:</h1>
+      <div id="resultsList" class="border rounded-lg py-4 px-6 bg-transparent shadow-md"></div>
     </div>
   </main>
 
-  <footer class="bg-gray-800 text-white py-4">
-    <div class="container mx-auto text-center">
-      <p class="text-sm">&copy; 2023 ig-api. All rights reserved.</p>
-    </div>
+  <footer class="bg-transparent text-white font-extrabold py-4">
+    <p class="text-center text-sm">&copy; 2023 ig-api. All rights reserved.</p>
   </footer>
+
+  <script>
+    // JavaScript code
+    document.addEventListener("DOMContentLoaded", function () {
+      const menuButton = document.getElementById("menuButton");
+      const navList = document.getElementById("navList");
+
+      menuButton.addEventListener("click", function () {
+        navList.classList.toggle("hidden");
+      });
+    });
+  </script>
 
   <script src="results.js"></script>
 </body>

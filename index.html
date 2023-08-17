@@ -8,20 +8,38 @@
 
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
 
+  <style>
+    body {
+      background-image: url("./bg.mov");
+      background-size: cover;
+    }
+  </style>
+  
+
 </head>
 
-<body class="font-sans leading-normal tracking-normal">
+<body class="flex flex-col min-h-screen bg-gray-100 font-sans leading-normal tracking-normal">
 
-  <header class="bg-white border-b md:sticky top-0 z-10">
-    <nav class="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
-      <ul class="flex flex-col md:flex-row list-none ml-auto">
+  <header class="md:sticky top-0 z-10">
+    <nav class="container mx-auto flex flex-wrap p-5 md:flex-row items-center justify-between">
+      <div class="flex items-center justify-between w-full md:w-auto">
+        <a href="index.html">
+          <img src="./logo.webp" alt="Logo" class="w-20 h-20">
+        </a>
+        <button id="menuButton" class="ml-4 md:hidden">
+          <svg class="w-6 h-6" viewBox="0 0 24 24">
+            <path fill="currentColor" d="M4 6h16v2H4zm0 5h16v2H4zm0 5h16v2H4z"/>
+          </svg>
+        </button>
+      </div>
+      <ul id="navList" class="hidden md:flex flex-col md:flex-row list-none ml-auto">
         <li class="nav-item">
-          <a class="px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug text-black hover:color-skyblue opacity-75" href="index.html">
+          <a class="px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug text-black hover:opacity-75" href="index.html">
             Home
           </a>
         </li>
         <li class="nav-item">
-          <a class="px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug text-skyblue hover:opacity-75" href="about.html">
+          <a class="px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug text-black hover:opacity-75" href="about.html">
             About
           </a>
         </li>
@@ -45,20 +63,31 @@
   </header>
 
   <main class="flex-grow">
-    <section class="bg-cover bg-center h-screen flex items-center" style="background-image:url('your-hero-image.jpg');">
+    <section class="bg-cover bg-center h-screen flex items-center">
       <div class="container mx-auto text-center">
         <h1 class="text-skyblue text-5xl font-extrabold mb-4">insightful</h1>
         <p class="text-skyblue-300 text-lg mb-6">Welcome to the easiest way to view analytics for your Instagram</p>
-        <a href="upload.html" class="bg-blue-500 text-white px-8 py-3 rounded-full hover:bg-grey-300 transition duration-300 ease-in-out">
+        <a href="upload.html" class="bg-blue-500 text-white px-8 py-3 rounded-full hover:bg-blue-600 transition duration-300 ease-in-out">
           Get Started
         </a>
       </div>
     </section>
   </main>
 
-  <footer class="bg-gray-800 text-white py-4">
+  <footer class="bg-transparent text-white font-extrabold py-4">
     <p class="text-center text-sm">&copy; 2023 ig-api. All rights reserved.</p>
   </footer>
 
+  <script>
+    // JavaScript code
+    document.addEventListener("DOMContentLoaded", function () {
+      const menuButton = document.getElementById("menuButton");
+      const navList = document.getElementById("navList");
+
+      menuButton.addEventListener("click", function () {
+        navList.classList.toggle("hidden");
+      });
+    });
+  </script>
 </body>
 </html>

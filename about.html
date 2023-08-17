@@ -7,13 +7,31 @@
   <title>About Insightful</title>
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
 
+  <style>
+    body {
+      background-image: url("./bg.mov");
+      background-size: cover;
+    }
+  </style>
+  
+
 </head>
 
 <body class="flex flex-col min-h-screen bg-gray-100 font-sans leading-normal tracking-normal">
 
-  <header class="bg-white border-b md:sticky top-0 z-10">
-    <nav class="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
-      <ul class="flex flex-col md:flex-row list-none ml-auto">
+  <header class="md:sticky top-0 z-10">
+    <nav class="container mx-auto flex flex-wrap p-5 md:flex-row items-center justify-between">
+      <div class="flex items-center justify-between w-full md:w-auto">
+        <a href="index.html">
+          <img src="./logo.webp" alt="Logo" class="w-20 h-20">
+        </a>
+        <button id="menuButton" class="ml-4 md:hidden">
+          <svg class="w-6 h-6" viewBox="0 0 24 24">
+            <path fill="currentColor" d="M4 6h16v2H4zm0 5h16v2H4zm0 5h16v2H4z"/>
+          </svg>
+        </button>
+      </div>
+      <ul id="navList" class="hidden md:flex flex-col md:flex-row list-none ml-auto">
         <li class="nav-item">
           <a class="px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug text-black hover:opacity-75" href="index.html">
             Home
@@ -45,24 +63,34 @@
 
   <main class="flex-grow py-16">
     <section class="container mx-auto text-center">
-      <h1 class="text-4xl font-extrabold mb-4">About Insightful</h1>
-      <p class="text-lg mb-4">Insightful is a transparent and secure platform that allows you to gather analytics on their public or private Instagram accounts in a safe and secure manner. 
+      <h1 class="text-4xl font-extrabold mb-4 text-white">About Insightful</h1>
+      <p class="text-lg mb-4 font-extrabold text-white shadow-2xl">Insightful is a transparent and secure platform that allows you to gather analytics on their public or private Instagram accounts in a safe and secure manner. 
         You can now compare your followers and following lists on Instagram and so much more without the need for providing your Instagram username or password. 
         We believe in empowering users to have full control over their data.</p>
-      <p class="text-lg mb-4">With Insightful, you can seamlessly either download or view your analytics from Instagram in a secure manner, by simply uploading your data to our platform for analysis. 
+      <p class="text-lg mb-4 font-extrabold text-white shadow-2xl">With Insightful, you can seamlessly either download or view your analytics from Instagram in a secure manner, by simply uploading your data to our platform for analysis. 
         We provide a hassle-free experience without compromising your privacy.</p>
-      <p class="text-lg mb-4">We prioritize transparency and ensure that your data is handled securely. 
+      <p class="text-lg mb-4 font-extrabold text-white shadow-2xl">We prioritize transparency and ensure that your data is handled securely. 
         We do not require your Instagram login credentials, and we don't store or transmit any sensitive information. 
         Your data is processed locally on your device, ensuring maximum privacy and security.</p>
-      <p class="text-lg">Our mission is to provide users with valuable insights into their Instagram audience allowing you to understand your network better and make informed decisions.</p>
+      <p class="text-lg font-extrabold text-white shadow-2xl">Our mission is to provide users with valuable insights into their Instagram audience allowing you to understand your network better and make informed decisions.</p>
     </section>
   </main>
 
-  <footer class="bg-gray-800 text-white py-4">
-    <div class="container mx-auto text-center">
-      <p class="text-sm">&copy; 2023 ig-api. All rights reserved.</p>
-    </div>
+  <footer class="bg-transparent text-white font-extrabold py-4">
+    <p class="text-center text-sm">&copy; 2023 ig-api. All rights reserved.</p>
   </footer>
+
+  <script>
+    // JavaScript code
+    document.addEventListener("DOMContentLoaded", function () {
+      const menuButton = document.getElementById("menuButton");
+      const navList = document.getElementById("navList");
+
+      menuButton.addEventListener("click", function () {
+        navList.classList.toggle("hidden");
+      });
+    });
+  </script>
 
 </body>
 </html>

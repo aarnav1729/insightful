@@ -7,13 +7,31 @@
   <title>insightful</title>
 
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <style>
+    body {
+      background-image: url("./bg.mov");
+      background-size: cover;
+    }
+  </style>
+  
+
 </head>
 
 <body class="flex flex-col min-h-screen bg-gray-100 font-sans leading-normal tracking-normal">
 
-  <header class="bg-white border-b md:sticky top-0 z-10">
-    <nav class="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
-      <ul class="flex flex-col md:flex-row list-none ml-auto">
+  <header class="md:sticky top-0 z-10">
+    <nav class="container mx-auto flex flex-wrap p-5 md:flex-row items-center justify-between">
+      <div class="flex items-center justify-between w-full md:w-auto">
+        <a href="index.html">
+          <img src="./logo.webp" alt="Logo" class="w-20 h-20">
+        </a>
+        <button id="menuButton" class="ml-4 md:hidden">
+          <svg class="w-6 h-6" viewBox="0 0 24 24">
+            <path fill="currentColor" d="M4 6h16v2H4zm0 5h16v2H4zm0 5h16v2H4z"/>
+          </svg>
+        </button>
+      </div>
+      <ul id="navList" class="hidden md:flex flex-col md:flex-row list-none ml-auto">
         <li class="nav-item">
           <a class="px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug text-black hover:opacity-75" href="index.html">
             Home
@@ -45,9 +63,9 @@
 
   <main class="flex-grow py-16">
     <section class="container mx-auto px-4">
-      <h1 class="text-3xl md:text-4xl font-bold mb-4">How to Download Your Data from Instagram</h1>
-      <p class="text-gray-700 mb-4">Follow these steps to download your data from Instagram:</p>
-      <ol class="list-decimal pl-6 text-gray-700">
+      <h1 class="text-3xl font-extrabold mb-4 text-white">How to Download Your Data from Instagram</h1>
+      <p class="text-white font-extrabold mb-4">Follow these steps to download your data from Instagram:</p>
+      <ol class="list-decimal pl-6 text-white">
         <li>Go to the Instagram website and log in to your account.</li>
         <li>Click on your profile picture at the top right corner of the screen.</li>
         <li>Select "Settings" from the drop-down menu.</li>
@@ -57,15 +75,25 @@
         <li>Open the email and click on the download link.</li>
         <li>Save the downloaded file to your computer.</li>
       </ol>
-      <p class="text-gray-700 mt-6">Once you have downloaded your data from Instagram, you can come back to our website and upload the downloaded file to compare your followers and following lists.</p>
+      <p class="text-white mt-6">Once you have downloaded your data from Instagram, you can come back to our website and upload the downloaded file to compare your followers and following lists.</p>
     </section>
   </main>
 
-  <footer class="bg-gray-800 text-white py-4">
-    <div class="container mx-auto text-center">
-      <p class="text-sm">&copy; 2023 ig-api. All rights reserved.</p>
-    </div>
+  <footer class="bg-transparent text-white font-extrabold py-4">
+    <p class="text-center text-sm">&copy; 2023 ig-api. All rights reserved.</p>
   </footer>
+
+  <script>
+    // JavaScript code
+    document.addEventListener("DOMContentLoaded", function () {
+      const menuButton = document.getElementById("menuButton");
+      const navList = document.getElementById("navList");
+
+      menuButton.addEventListener("click", function () {
+        navList.classList.toggle("hidden");
+      });
+    });
+  </script>
 
 </body>
 
