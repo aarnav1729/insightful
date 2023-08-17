@@ -69,9 +69,6 @@
         <button id="processButton" class="bg-blue-500 text-white px-6 py-2 rounded-lg mt-4 hover:bg-blue-600 transition duration-300 ease-in-out">
           Extract Data
         </button>
-        <div class="mt-8">
-          <a href="#" id="downloadLink" style="display: none" class="bg-blue-500 text-white px-8 py-3 rounded-full hover:bg-blue-600 transition duration-300 ease-in-out">Download Your Data</a>
-        </div>
       </div>
       <div class="mt-16 text-center">
         <a href="upload2.html" class="bg-blue-500 text-white px-8 py-3 rounded-full hover:bg-blue-600 transition duration-300 ease-in-out">Click Here For Next Upload!</a>
@@ -84,15 +81,17 @@
   </footer>
 
   <script>
-    // JavaScript code
     document.addEventListener("DOMContentLoaded", function () {
-      const menuButton = document.getElementById("menuButton");
-      const navList = document.getElementById("navList");
+        const menuButton = document.getElementById("menuButton");
+        const navList = document.getElementById("navList");
 
-      menuButton.addEventListener("click", function () {
-        navList.classList.toggle("hidden");
+        menuButton.addEventListener("click", function () {
+          navList.classList.toggle("hidden");
+        });
+
+        const processButton = document.getElementById("processButton");
+        processButton.addEventListener("click", handleFile);
       });
-    });
   </script>
 
   <script src="script.js"></script>

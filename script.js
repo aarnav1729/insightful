@@ -1,6 +1,16 @@
 const innerSelector = "div._a6-p > div > div:nth-child(1) > a";
 
-document.getElementById('processButton').addEventListener('click', handleFile);
+document.addEventListener("DOMContentLoaded", function () {
+  const menuButton = document.getElementById("menuButton");
+  const navList = document.getElementById("navList");
+
+  menuButton.addEventListener("click", function () {
+    navList.classList.toggle("hidden");
+  });
+
+  const processButton = document.getElementById("processButton");
+  processButton.addEventListener("click", handleFile);
+});
 
 function handleFile() {
   const fileInput = document.getElementById('fileInput');
@@ -20,8 +30,7 @@ function handleFile() {
       const resultTxt = createResultText(extractedData);
 
       const fileName = 'followers.txt';
-      const downloadLinkId = 'downloadLink';
-      downloadResult(resultTxt, fileName, downloadLinkId);
+      downloadResult(resultTxt, fileName);
 
       // Store the extractedData in localStorage
       localStorage.setItem('followersData', JSON.stringify(extractedData));
@@ -58,11 +67,18 @@ function createResultText(data) {
   return data.join('\n');
 }
 
-function downloadResult(resultText, fileName, downloadLinkId) {
-  const downloadLink = document.getElementById(downloadLinkId);
+function downloadResult(resultText, fileName) {
   const blob = new Blob([resultText], { type: 'text/plain' });
   const url = URL.createObjectURL(blob);
-  downloadLink.href = url;
-  downloadLink.download = fileName;
-  downloadLink.style.display = 'block';
+  
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = fileName;
+  a.style.display = 'none';
+  document.body.appendChild(a);
+  
+  a.click();
+  
+  document.body.removeChild(a);
+  URL.revokeObjectURL(url);
 }
